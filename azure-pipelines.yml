@@ -1,19 +1,22 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+trigger: none
+pool: Agentpool
+jobs:
+ - job: job1
+   displayName: string # Human-readable name for the job.
+   pool: macpool
+   dependsOn: agentpool
+   steps:
+     - task: CmdLine@1
+       inputs:
+        script: 'mac'
+ - job: job2
+   displayName: string # Human-readable name for the job.
+   dependsOn: string 
+   steps:
 
-trigger:
-- main
-
-pool:
-  vmImage: ubuntu-latest
-
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+ - job: TerraformInt
+   displayName: Init
+   steps:
+     - task: TerraformTaskV2@2
+       
+     
